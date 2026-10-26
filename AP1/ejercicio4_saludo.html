@@ -2,10 +2,24 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Saludo</title>
+  <title>AP1 - Ejercicio 4: Saludo</title>
 </head>
 <body>
+  <h1>AP1 - Ejercicio 4: Saludo</h1>
+  <p>Abre la consola del navegador (F12 &rarr; pestaña <strong>Consola</strong>) y recarga la página (F5) para ver el resultado.</p>
+  <p>Para depurar, usa la pestaña <strong>Depurador / Sources</strong>.</p>
+
 <script>
+// ============================================================
+// EJERCICIO 4: Saludo
+// Objetivo: saludar según la hora del día y el nombre.
+//
+// REGISTRO DE ERRORES (AP1):
+// 1. Llamada a la función (`crearSaludo(hora, nombre)`): Tipo LÓGICA
+//    - Descripción: Se pasaban los argumentos al revés de lo que espera la función (`nombre` primero y `hora` después), provocando que se mezclaran los tipos de datos.
+//    - Corrección: Se cambió a `crearSaludo(nombre, hora)` para respetar el orden.
+// ============================================================
+
 function crearSaludo(nombre, hora) {
   let saludo = "Hola";
  
@@ -22,7 +36,7 @@ function crearSaludo(nombre, hora) {
  
 let nombre = "Ana";
 let hora = 15;
-let mensaje = crearSaludo(hora, nombre);
+let mensaje = crearSaludo(nombre, hora);
 console.log(mensaje);
 </script>
 </body>

@@ -18,9 +18,19 @@
 //   Ana tiene una media de 7.50 y su resultado es APROBADO
 //   Luis tiene una media de 4.25 y su resultado es SUSPENSO
 //
-// TAREA: hay 4 errores. Encuéntralos, corrígelos y explica
-// con tus palabras qué fallaba en cada caso.
-// PISTA: no todos los errores muestran un mensaje en rojo.
+// REGISTRO DE ERRORES (AP1):
+// 1. Línea de cálculo de media (`notas.lenght`): Tipo EJECUCIÓN
+//    - Descripción: ESta mal escrita la propiedad `length` (ponía `lenght`), devolviendo `undefined` y calculando `NaN`.
+//    - Corrección: Se cambió a `notas.length`.
+// 2. Línea de asignación de resultado (`resultdo`): Tipo LÓGICA / SINTAXIS
+//    - Descripción: Error ortografico en el nombre de la variable (`resultdo` en lugar de `resultado`), lo que provocaba que nunca cambiase a "APROBADO".
+//    - Corrección: Se corrigió a `resultado = "APROBADO"`.
+// 3. Declaración de `media` (`const media`): Tipo EJECUCIÓN
+//    - Descripción: Se declaró como `const` pero más abajo se intentaba reasignar con `media.toFixed(2)`, provocando un error.
+//    - Corrección: Se cambió a `let media = suma / notas.length;`.
+// 4. Llamada a la función (`crearInforme(notasAna, "Ana")`): Tipo LÓGICA
+//    - Descripción: Se pasaban los parámetros invertidos (el array de notas primero y el nombre después), cuando la función espera `(nombre, notas)`.
+//    - Corrección: Se cambió a `crearInforme("Ana", notasAna)` y `crearInforme("Luis", notasLuis)`.
 // ============================================================
 
 function crearInforme(nombre, notas) {
@@ -29,11 +39,11 @@ function crearInforme(nombre, notas) {
     suma = suma + notas[i];
   }
 
-  const media = suma / notas.lenght;
+  let media = suma / notas.length;
 
   let resultado = "SUSPENSO";
   if (media >= 5) {
-    resultdo = "APROBADO";
+    resultado = "APROBADO";
   }
 
   media = media.toFixed(2);
@@ -44,8 +54,8 @@ function crearInforme(nombre, notas) {
 let notasAna = [8, 7, 6, 9];
 let notasLuis = [3, 5, 4, 5];
 
-console.log(crearInforme(notasAna, "Ana"));
-console.log(crearInforme(notasLuis, "Luis"));
+console.log(crearInforme("Ana", notasAna));
+console.log(crearInforme("Luis", notasLuis));
 </script>
 </body>
 </html>

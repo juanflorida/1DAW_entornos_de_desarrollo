@@ -19,16 +19,20 @@
 //   Número de términos: 10
 //   Números pares: 4
 //
-// TAREA: ejecuta el programa, usa la consola/depurador,
-// encuentra los errores y corrígelos. Anota de qué tipo es cada uno
-// (sintaxis, ejecución o lógica).
+// REGISTRO DE ERRORES (AP1):
+// 1. Línea ~32 (Condición del bucle for): Tipo LÓGICA
+//    - Descripción: El bucle usaba `i <= n` con n=10, lo que provocaba que se ejecutasen muchas repeticiones y devolviese 11 términos en lugar de 10.
+//    - Corrección: Se cambió a `i < n` para ajustarse exactamente a los 10 términos iniciales requeridos.
+// 2. Línea ~33 (Cálculo de Fibonacci): Tipo LÓGICA
+//    - Descripción: Se sumaba `serie[i - 1] + serie[i - 3]`, y se rompía la secuencia matemática de Fibonacci.
+//    - Corrección: Se corrigió a `serie[i - 1] + serie[i - 2]` para sumar correctamente los dos números anteriores.
 // ============================================================
 
 function fibonacci(n) {
   let serie = [0, 1];
 
-  for (let i = 2; i <= n; i++) {
-    serie.push(serie[i - 1] + serie[i - 3]);
+  for (let i = 2; i < n; i++) {
+    serie.push(serie[i - 1] + serie[i - 2]);
   }
 
   return serie;

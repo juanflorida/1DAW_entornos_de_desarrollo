@@ -20,21 +20,31 @@
 //   Media: 3
 //   Máximo con negativos: -2
 //
-// TAREA: encuentra y corrige los errores. Usa console.log,
-// puntos de interrupción (breakpoints) y el panel "Watch"
-// de las DevTools para seguir el valor de las variables.
+// REGISTRO DE ERRORES (AP1):
+// 1. Línea ~32 (`sumar` - Inicialización de variable): Tipo LÓGICA
+//    - Descripción: La variable `total` se inicializaba como una cadena vacía `""`, lo que provocaba que no apareciera una suma numérica.
+//    - Corrección: Se cambió a `let total = 0;`.
+// 2. Línea ~33 (`sumar` - Bucle for): Tipo LÓGICA
+//    - Descripción: El bucle empezaba en `i = 1` (saltándose el primer elemento) y usaba `<=` (provocando un acceso a `undefined` al final).
+//    - Corrección: Se cambió a `for (let i = 0; i < array.length; i++)`.
+// 3. Línea ~41 (`maximo` - Inicialización): Tipo LÓGICA
+//    - Descripción: `max` se inicializaba a `0`, lo cual fallaba al buscar el máximo en arrays de números puramente negativos (devolviendo `0` en vez del número mayor).
+//    - Corrección: Se inicializó con el primer elemento del array: `let max = array[0];`.
+// 4. Línea ~54 (`media` - Propiedad length): Tipo EJECUCIÓN
+//    - Descripción: Se intentaba usar `array.length()` como si fuera una función, lo que lanzaba un error de tipo (TypeError).
+//    - Corrección: Se eliminaron los paréntesis para usarlo correctamente como propiedad: `array.length`.
 // ============================================================
 
 function sumar(array) {
-  let total = "";
-  for (let i = 1; i <= array.length; i++) {
+  let total = 0;
+  for (let i = 0; i < array.length; i++) {
     total += array[i];
   }
   return total;
 }
 
 function maximo(array) {
-  let max = 0;
+  let max = array[0];
   for (let i = 0; i < array.length; i++) {
     if (array[i] > max) {
       max = array[i];
@@ -44,7 +54,7 @@ function maximo(array) {
 }
 
 function media(array) {
-  return sumar(array) / array.length();
+  return sumar(array) / array.length;
 }
 
 let numeros = [4, -2, 9, 1, 3];
